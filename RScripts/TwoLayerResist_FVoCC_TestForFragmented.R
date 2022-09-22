@@ -83,7 +83,7 @@ cl <- makeCluster(ncores)
 registerDoParallel(cl)
 
 ##Start paprallel processing.
-result <- foreach(x = 1:ncores, .combine = rbind, 
+result <- foreach(x = 1:ncores, .combine = rbind, #maybe use rbindlist instead? .combine=function(x,y)rbindlist(list(x,y))
                   .multicombine = TRUE) %dopar% { #Change the raster package to terra?
                     library(raster)
                     library(gdistance)
